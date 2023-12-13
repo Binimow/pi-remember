@@ -1,15 +1,18 @@
 <div class="main-container">
-  <div class="number-input-container" [formGroup]="form" [ngStyle]="{'color': isWrong ? 'red' : '#444444'}">
-    @for (pair of currentlyShownLetter; let idx = $index; track pair[0]) {
-        <span
-          class="old-entered-letter"
-          #letterSpan
-          [@slideLeft]="idx"
-          >
-          {{ +pair[0] == 0 ? pair[1] + ",": pair[1] }}
-        </span>
-    }
-    <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)" autofocus>
+  <div class="center">
+    <div class="number-input-container" [formGroup]="form" [ngStyle]="{'color': isWrong ? 'red' : '#444444'}">
+      @for (pair of currentlyShownLetter; let idx = $index; track pair[0]) {
+          <span
+            class="old-entered-letter"
+            #letterSpan
+            [@slideLeft]="idx"
+            >
+            {{ +pair[0] == 0 ? pair[1] + ",": pair[1] }}
+          </span>
+        }
+        <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)" autofocus>
+      </div>
+      <p class="score">Score: {{ letterToEnterIndex - 3 }}</p>
+    </div>
   </div>
-</div>
 <!-- VOIR POUR AMeLIORER et utilise un dict de 3 elements au  -->
