@@ -10,7 +10,7 @@
             {{ +pair[0] == 0 ? pair[1] + ",": pair[1] }}
           </span>
         }
-        <input type=number class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)" autofocus>
+        <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)" autofocus>
       </div>
       <p class="score">Score: {{ letterToEnterIndex - 3 }}</p>
     </div>
