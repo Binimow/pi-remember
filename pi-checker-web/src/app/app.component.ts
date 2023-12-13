@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { PI } from './pi';
+import { PI, PIDict } from './pi';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { trigger, state, style, animate, transition, query, stagger } from '@angular/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,8 +26,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       transition('void => 2', animate('600ms ease')),
       transition('void => 1', animate('0ms')),
       transition('void => 0', animate('0ms')),
-      
-      // transition('* => *', animate('600ms ease')),
       transition(':enter', [
         style({transform: 'translateX(0px)'}),
         animate('600ms ease', style({transform: 'translateX(-40px)'}))
@@ -41,7 +39,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export class AppComponent implements OnInit {
   letterToEnterIndex = 3;
   PI = PI
+  PIList = PI.split('')
+  PIDict = PIDict
+
   animationState = 'start';
+
   currentlyShownLetter = PI.slice(this.letterToEnterIndex - 3, this.letterToEnterIndex).split('');
 
   form = new FormGroup({
@@ -51,9 +53,6 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    console.log('AppComponent.onInit()');
-    console.log(PI)
-
     this.form = this.formBuilder.group({
       pi: [""],
     })
@@ -64,13 +63,17 @@ export class AppComponent implements OnInit {
     this.letterToEnterIndex++;
     this.form.controls.pi.setValue("")
     this.currentlyShownLetter = PI.slice(this.letterToEnterIndex - 3, this.letterToEnterIndex).split('');
-    console.log(this.currentlyShownLetter)
   }
 
-  letterClicked(index: number, letter: string | null) {
-    console.log(`letterClicked(${index}, ${letter})`)
+  trackByFn(index: number, item: any) {
+    return item; // use the index as the unique identifier
   }
-  animationDone(event: any) {
-    console.log(event)
-  }
+
+  range(start: number, end: number) {
+    var ans = [];
+    for (let i = start; i <= end; i++) {
+        ans.push(i);
+    }
+    return ans;
+}
 }

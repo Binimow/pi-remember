@@ -1,22 +1,13 @@
 <div class="main-container">
   <div class="number-input-container" [formGroup]="form">
     <span 
-      *ngFor="let letter of currentlyShownLetter; index as i" 
+      *ngFor="let numberIndex of range(this.letterToEnterIndex - 3, this.letterToEnterIndex - 1); index as i; trackBy: trackByFn" 
       class="old-entered-letter"
-      [@slideLeft]="i"
-      (@slideLeft.done)="animationDone($event)"
-      (click)="letterClicked(i, letterSpan.textContent)"
+      [@slideLeft]="{value: i, params: {delay: i * 150}}"
       #letterSpan
       >
-      {{i}}
-      {{ (letterToEnterIndex - 3 == 0) && letter == '3' ? letter + ",": letter }}
+      {{ numberIndex == 0 ? this.PIDict[numberIndex] + ",": this.PIDict[numberIndex] }}
     </span>
-    <!-- <span class="old-entered-letter" [@slideLeft]="animationState"> {{ letterToEnterIndex == 3 ? PI[letterToEnterIndex - 3] + ",": PI[letterToEnterIndex - 3]}} </span> -->
-    <!-- <span class="old-entered-letter" [@slideLeft]="animationState"> {{ PI[letterToEnterIndex - 2]}} </span> -->
-    <!-- <span class="old-entered-letter" [@slideLeft]="animationState"> {{ PI[letterToEnterIndex - 1]}} </span> -->
     <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)">
   </div>
 </div>
-
-<!-- [ngStyle]="{'left': (i * 40) - 120 + 'px'}" -->
-<!-- [@slideLeft]="i" -->
