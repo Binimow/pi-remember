@@ -1,13 +1,15 @@
 <div class="main-container">
-  <div class="number-input-container" [formGroup]="form">
-    <span 
-      *ngFor="let numberIndex of range(this.letterToEnterIndex - 3, this.letterToEnterIndex - 1); index as i; trackBy: trackByFn" 
-      class="old-entered-letter"
-      [@slideLeft]="{value: i, params: {delay: i * 150}}"
-      #letterSpan
-      >
-      {{ numberIndex == 0 ? this.PIDict[numberIndex] + ",": this.PIDict[numberIndex] }}
-    </span>
-    <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)">
+  <div class="number-input-container" [formGroup]="form" [ngStyle]="{'color': isWrong ? 'red' : '#444444'}">
+    @for (pair of currentlyShownLetter; let idx = $index; track pair[0]) {
+        <span
+          class="old-entered-letter"
+          #letterSpan
+          [@slideLeft]="idx"
+          >
+          {{ +pair[0] == 0 ? pair[1] + ",": pair[1] }}
+        </span>
+    }
+    <input class="pi-input-field" formControlName="pi" #pi (input)="newLetterEntered(pi.value)" autofocus>
   </div>
 </div>
+<!-- VOIR POUR AMeLIORER et utilise un dict de 3 elements au  -->

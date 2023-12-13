@@ -41,32 +41,45 @@ export class AppComponent implements OnInit {
   PI = PI
   PIList = PI.split('')
   PIDict = PIDict
+  PIDictList = Object.entries(PIDict)
+  isWrong = false
 
-  animationState = 'start';
-
-  currentlyShownLetter = PI.slice(this.letterToEnterIndex - 3, this.letterToEnterIndex).split('');
-
+  
+  currentlyShownLetter: [string, string][] = [] 
+  
   form = new FormGroup({
     pi: new FormControl('')
   })
-
+  
   constructor(private formBuilder: FormBuilder) { }
-
+  
   ngOnInit() {
     this.form = this.formBuilder.group({
       pi: [""],
     })
+    
+    this.refreshCurrentLetters()
   }
 
   newLetterEntered(letter: string) {
-    this.animationState = 'end';
     this.letterToEnterIndex++;
     this.form.controls.pi.setValue("")
-    this.currentlyShownLetter = PI.slice(this.letterToEnterIndex - 3, this.letterToEnterIndex).split('');
+    if (this.isWrong) {
+      this.isWrong = false;
+    }
+    if (letter !== this.PIDict[this.letterToEnterIndex - 1]) {
+      this.isWrong = true;
+      this.letterToEnterIndex = 3;
+    }
+    this.refreshCurrentLetters();
   }
 
-  trackByFn(index: number, item: any) {
-    return item; // use the index as the unique identifier
+  refreshCurrentLetters() {
+    this.currentlyShownLetter = this.PIDictList
+      .filter(
+        x =>  +x[0] >= this.letterToEnterIndex - 3 && 
+              +x[0] < this.letterToEnterIndex
+      );
   }
 
   range(start: number, end: number) {
@@ -75,5 +88,5 @@ export class AppComponent implements OnInit {
         ans.push(i);
     }
     return ans;
-}
+  }
 }
