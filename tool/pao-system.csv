@@ -1,5 +1,7 @@
 Chiffres,Pair de lettre,Personne,Action,Objet
+06,OS,OSS,Est raciste,Un Chinois
 07,OG,Original Gangster,Tue,Fusil
+08,OH,Oppenheimer,Invente,Bombe nucléaire
 10,AO,Alex Ovechkin,Fait un lancé frappé,Rondelle
 11,AG,Agatha Christie,Disparait,Hotel
 12,AB,Alec Baldwin,Tue,Directeur Photo
@@ -31,6 +33,7 @@ Chiffres,Pair de lettre,Personne,Action,Objet
 58,EH,Ethan Hawke,Se torture,Du verre
 59,EN,Eliot Ness,Est incorruptible,Alcool
 62,SB,Simone Beauvoir,Se fait tromper,Lit
+64,SD,Snoop Dogg,Fume,Cannabis
 65,SE,Sam Elliot,Chevauche,Chevaux
 69,SN,Saint-Arnaud Normand,Possede,Batiment
 70,GO,George Orwell,Dicte,Une ferme
@@ -39,7 +42,9 @@ Chiffres,Pair de lettre,Personne,Action,Objet
 75,GE,George Eliot,Se fait passer,Homme
 77,GG,General Grivious,,
 79,GN,Gabe Newell,Livre,Steam Deck
+81,HA,HAL,Enferme,Humain
 84,HD,Harley Davidson,Roule,Moto
+86,HS,Howard Stern,Anime,Radio
 89,HN,Hikaru Nakamura,Joue aux échecs,Pièce d'échec
 92,NB,Niels Bohr,Bois,Bière
 93,NC,Nicolas Cage,Enchéri,Tête de dinosaure

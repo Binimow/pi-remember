@@ -1,4 +1,4 @@
-pi_decimals_sequence = "1415926535897932384626433832795028841971693993751058209749445923" #07816406286208998628034825342117067"
+pi_decimals_sequence = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986" #280348253421170679"
 
 def divide_pi(decimals, sublist_size, group_size):
     # Convert the string of decimals into a list of integers
@@ -30,12 +30,12 @@ def pi_to_pao(pi_divided, pao_system):
     for group in pi_divided:
         if len(group) < 3:
             return pao_string
-        personne_num = int(''.join(map(str, group[0])))
-        action_num = int(''.join(map(str, group[1])))
-        objet_num = int(''.join(map(str, group[2])))
-        pao_string += pao_system[str(personne_num)]['Personne'] + " "
-        pao_string += pao_system[str(action_num)]['Action'] + " "
-        pao_string += pao_system[str(objet_num)]['Objet'] + " "
+        personne_num = ''.join(map(str, group[0]))
+        action_num = ''.join(map(str, group[1]))
+        objet_num = ''.join(map(str, group[2]))
+        pao_string += pao_system[personne_num]['Personne'] + " "
+        pao_string += pao_system[action_num]['Action'] + " "
+        pao_string += pao_system[objet_num]['Objet'] + " "
         pao_string += "\n"
         
     return pao_string
